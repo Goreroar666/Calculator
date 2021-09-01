@@ -1,13 +1,4 @@
-const zero = document.getElementById("0");
-const one = document.getElementById("1");
-const two = document.getElementById("2");
-const three = document.getElementById("3");
-const four = document.getElementById("4");
-const five = document.getElementById("5");
-const six = document.getElementById("6");
-const seven = document.getElementById("7");
-const eight = document.getElementById("8");
-const nine = document.getElementById("9");
+const numberBtns = document.querySelectorAll('button');
 const AC = document.getElementById("AC");
 const minus = document.getElementById("+/-");
 const perc = document.getElementById("%");
@@ -17,8 +8,9 @@ const plus = document.getElementById("+");
 const dot = document.getElementById(".");
 const operateBtn = document.getElementById("=");
 const subtrBtn = document.getElementById("-");
-
-let screenArray = [];
+const screen = document.querySelector("screen");
+const input = document.getElementById("input");
+let inputNumber = 0;
 
 function add(x, y) {
 	return x + y;
@@ -61,4 +53,25 @@ return add(x, y);
 }
 };
 
-one.addEventListener('click', )
+numberBtns.forEach((button) => {
+  button.addEventListener('click', addNumber);
+})
+numberBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    showNumber(inputNumber);
+  })
+})
+
+function addNumber(button) {
+  inputNumber += button.target.value;
+  return inputNumber;
+}
+
+function showNumber(x) {
+if (x) x = x.slice(1);
+input.textContent = x;
+}
+AC.addEventListener('click', function() {
+  input.textContent = 0;
+  inputNumber = 0;
+})

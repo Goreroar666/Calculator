@@ -75,3 +75,28 @@ AC.addEventListener('click', function() {
   input.textContent = 0;
   inputNumber = 0;
 })
+
+operateBtn.addEventListener('click', operate);
+
+dot.addEventListener('click', addNumber);
+dot.addEventListener('click', showNumber);
+
+mult.addEventListener('click', chooseOperator);
+plus.addEventListener('click', chooseOperator);
+subtrBtn.addEventListener('click', chooseOperator);
+slash.addEventListener('click', chooseOperator);
+
+
+function chooseOperator() {
+  let x = inputNumber;
+  if(button.value === "+") {
+    operator = "+"
+  } if (button.value === "-") {
+    operator = "-"
+  } if (button.value === "/") {
+    operator = "/"
+  } if (button.value === "*") {
+    operator = "*"
+  }
+  return operator;
+}

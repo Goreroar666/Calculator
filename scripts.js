@@ -6,7 +6,7 @@ const slash = document.getElementById("/");
 const mult = document.getElementById("*");
 const plus = document.getElementById("+");
 const dot = document.getElementById(".");
-const operateBtn = document.getElementById("=");
+const operateBtn = document.getElementById("operateBtn");
 const subtrBtn = document.getElementById("-");
 const screen = document.querySelector("screen");
 const input = document.getElementById("input");
@@ -26,19 +26,6 @@ return x * y;
 
 function divide(x, y) {
     return x / y;
-};
-
-function power(a, b) {
-	return Math.pow(a, b);
-};
-
-function factorial(x) {
-	let arr = [];
-  if (x == 0 || x == 1) {
-    return 1;
-  } else {
-    return arr[x] = factorial(x-1) * x;
-  }
 };
 
 function operate (x, operator, y) {
@@ -76,8 +63,6 @@ AC.addEventListener('click', function() {
   inputNumber = 0;
 })
 
-operateBtn.addEventListener('click', operate);
-
 dot.addEventListener('click', addNumber);
 dot.addEventListener('click', showNumber);
 
@@ -88,15 +73,22 @@ slash.addEventListener('click', chooseOperator);
 
 
 function chooseOperator() {
-  let x = inputNumber;
-  if(button.value === "+") {
+  let operator = '';
+  if(plus.value) {
     operator = "+"
-  } if (button.value === "-") {
+  } if (subtrBtn.value) {
     operator = "-"
-  } if (button.value === "/") {
+  } if (slash.value) {
     operator = "/"
-  } if (button.value === "*") {
+  } if (mult.value) {
     operator = "*"
   }
   return operator;
-}
+};
+
+let x = inputNumber;
+let operator = chooseOperator();
+let y = inputNumber;
+
+operateBtn.addEventListener('click', operate);
+let result = operate();

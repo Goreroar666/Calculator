@@ -1,6 +1,74 @@
-.screen {
-    width: 150px;
-    height: 80px;
-    border: 1px solid black;
-    text-align: right;
-}
+button  
+{  
+width:40px;  
+height:30px;  
+border:none;  
+border-radius:8px;  
+margin-left:17px;  
+cursor:pointer;  
+border-top:2px solid transparent;  
+position:relative;  
+top:15px;  
+}  
+#AC  
+{  
+color:white;  
+background-color:#6f6f6f;  
+border-bottom:black 2px solid;  
+border-top:2px #6f6f6f solid;  
+}  
+.operateBtns  
+{  
+color:black;  
+background-color:#fffc45;  
+border-bottom:black 2px solid;  
+}  
+.numberButtons  
+{  
+color:black;  
+background-color:303030;  
+border-bottom:black 2px solid;  
+border-top:2px 303030 solid;  
+}  
+#operateBtn  
+{  
+color:black;  
+background-color:#FF9933;  
+border-bottom:black 2px solid;  
+border-top:2px #FF9933 solid;  
+}   
+body  
+{  
+background-color:tan;  
+}  
+.container  
+{  
+background-color:#3d4543;  
+height:300px;  
+width:250px;  
+border-radius:10px;  
+position:relative;  
+top:80px;  
+left:40%;  
+} 
+.screen  
+{  
+background-color:#222;  
+width:220px;  
+position:relative;  
+left:15px;  
+top:20px;  
+height:40px;  
+margin-bottom: 20px;
+}  
+#input  
+{  
+position:relative;  
+left:2px;  
+top:2px;  
+height:35px;  
+color:black;  
+background-color:#bccd95;  
+font-size:21px;  
+text-align:right;  
+} 

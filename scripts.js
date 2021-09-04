@@ -10,7 +10,7 @@ const operateBtn = document.getElementById("operateBtn");
 const subtrBtn = document.getElementById("-");
 const screen = document.querySelector("screen");
 const input = document.getElementById("input");
-let inputNumber = 0;
+let inputNumber = "";
 
 function add(x, y) {
 	return x + y;
@@ -46,6 +46,7 @@ numberBtns.forEach((button) => {
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => {
     showNumber(inputNumber);
+    console.log(inputNumber)
   })
 })
 
@@ -73,15 +74,15 @@ slash.addEventListener('click', chooseOperator);
 
 
 function chooseOperator() {
-  let operator = '';
-  if(plus.value) {
-    operator = "+"
-  } if (subtrBtn.value) {
-    operator = "-"
-  } if (slash.value) {
-    operator = "/"
-  } if (mult.value) {
-    operator = "*"
+  let operator = "";
+  if(plus) {
+    operator = "+";
+  } if (subtrBtn) {
+    operator = "-";
+  } if (slash) {
+    operator = "/";
+  } if (mult) {
+    operator = "*";
   }
   return operator;
 };
@@ -90,5 +91,11 @@ let x = inputNumber;
 let operator = chooseOperator();
 let y = inputNumber;
 
-operateBtn.addEventListener('click', operate);
-let result = operate();
+operateBtn.addEventListener('click', function() {
+let x = inputNumber;
+let operator = chooseOperator();
+let y = inputNumber;
+  let result = operate();
+  operate(x, operator, y);
+  return result;
+});

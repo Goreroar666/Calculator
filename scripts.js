@@ -1,16 +1,14 @@
-const numberBtns = document.querySelectorAll('button');
+const numberBtns = document.querySelectorAll('.numberButtons');
 const AC = document.getElementById("AC");
 const minus = document.getElementById("+/-");
-const perc = document.getElementById("%");
-const slash = document.getElementById("/");
-const mult = document.getElementById("*");
-const plus = document.getElementById("+");
 const dot = document.getElementById(".");
 const operateBtn = document.getElementById("operateBtn");
-const subtrBtn = document.getElementById("-");
 const screen = document.querySelector("screen");
 const input = document.getElementById("input");
+/* const operateBtns = document.querySelectorAll(".operateBtns");
+ */
 let inputNumber = "";
+const plus = document.getElementById("+");
 
 function add(x, y) {
 	return x + y;
@@ -29,13 +27,13 @@ function divide(x, y) {
 };
 
 function operate (x, operator, y) {
-  if (operator == "+") {
+  if (operator === "+") {
 return add(x, y);
-} if (operator == "-") {
+} if (operator === "-") {
   return subtract(x, y);
-} if (operator == "*") {
+} if (operator === "*") {
   return multiply(x, y);
-} if (operator == "/") {
+} if (operator === "/") {
   return divide(x, y);
 }
 };
@@ -67,27 +65,28 @@ AC.addEventListener('click', function() {
 dot.addEventListener('click', addNumber);
 dot.addEventListener('click', showNumber);
 
-mult.addEventListener('click', chooseOperator);
-plus.addEventListener('click', chooseOperator);
-subtrBtn.addEventListener('click', chooseOperator);
-slash.addEventListener('click', chooseOperator);
-
-
-function chooseOperator() {
+/* function chooseOperator() {
   let operator = "";
-  if(plus) {
+  if(operateBtns.value = "+") {
     operator = "+";
-  } if (subtrBtn) {
+  } if (operateBtns.value = "-") {
     operator = "-";
-  } if (slash) {
+  } if (operateBtns.value = "/") {
     operator = "/";
-  } if (mult) {
+  } if (operateBtns.value = "*") {
     operator = "*";
   }
   return operator;
 };
 
-let x = inputNumber;
+operateBtns.forEach((button) => {
+  button.addEventListener('click', chooseOperator)
+}); */
+
+
+
+
+/* let x = inputNumber;
 let operator = chooseOperator();
 let y = inputNumber;
 
@@ -99,3 +98,21 @@ let y = inputNumber;
   operate(x, operator, y);
   return result;
 });
+//branch commit */
+
+operateBtn.addEventListener('click', function() {
+  let x = Number(inputNumber);
+  let y = Number(inputNumber);
+  let operator = "+";
+  let result = operate(x, operator, y)
+  operate();
+  console.log(result);
+  input.textContent = result;
+  });
+  
+  
+  
+  plus.addEventListener('click', function() {
+  let operator = "+";
+  console.log(operator);
+  });

@@ -5,8 +5,8 @@ const dot = document.getElementById(".");
 const operateBtn = document.getElementById("operateBtn");
 const screen = document.querySelector("screen");
 const input = document.getElementById("input");
-/* const operateBtns = document.querySelectorAll(".operateBtns");
- */
+const previous = document.getElementById("numberOneAndOperator");
+const operateBtns = document.querySelectorAll(".operateBtns");
 let inputNumber = "";
 const plus = document.getElementById("+");
 
@@ -34,8 +34,8 @@ return add(x, y);
 } if (operator === "*") {
   return multiply(x, y);
 } if (operator === "/") {
-  return divide(x, y);
-}
+    return divide(x, y);
+  }
 };
 
 numberBtns.forEach((button) => {
@@ -44,7 +44,6 @@ numberBtns.forEach((button) => {
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => {
     showNumber(inputNumber);
-    console.log(inputNumber)
   })
 })
 
@@ -54,65 +53,48 @@ function addNumber(button) {
 }
 
 function showNumber(x) {
-if (x) x = x.slice(1);
 input.textContent = x;
 }
 AC.addEventListener('click', function() {
   input.textContent = 0;
-  inputNumber = 0;
+  inputNumber = '';
+  previous.textContent = '';
+  operator = '';
 })
 
 dot.addEventListener('click', addNumber);
 dot.addEventListener('click', showNumber);
 
-/* function chooseOperator() {
-  let operator = "";
-  if(operateBtns.value = "+") {
-    operator = "+";
-  } if (operateBtns.value = "-") {
-    operator = "-";
-  } if (operateBtns.value = "/") {
-    operator = "/";
-  } if (operateBtns.value = "*") {
-    operator = "*";
-  }
-  return operator;
-};
-
-operateBtns.forEach((button) => {
-  button.addEventListener('click', chooseOperator)
-}); */
-
-
-
-
-/* let x = inputNumber;
-let operator = chooseOperator();
-let y = inputNumber;
-
 operateBtn.addEventListener('click', function() {
-let x = inputNumber;
-let operator = chooseOperator();
-let y = inputNumber;
-  let result = operate();
-  operate(x, operator, y);
-  return result;
-});
-//branch commit */
-
-operateBtn.addEventListener('click', function() {
-  let x = Number(inputNumber);
+  let x = parseInt(previous.textContent, 10);
   let y = Number(inputNumber);
-  let operator = "+";
+  let operator = chooseOperator();
   let result = operate(x, operator, y)
   operate();
-  console.log(result);
-  input.textContent = result;
+  previous.innerText = `${x} ${operator} ${y} =`;
+  input.textContent = Math.round(result*100)/100;
   });
   
+
+  operateBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+      let operator = button.value;
+      previous.textContent = `${inputNumber} ${operator}`;
+      inputNumber = '';
+      
+    })
+  }); 
   
-  
-  plus.addEventListener('click', function() {
-  let operator = "+";
-  console.log(operator);
-  });
+  function chooseOperator() {
+    let operator = "";
+    if(previous.textContent.includes("+")) {
+      operator = "+";
+    } if(previous.textContent.includes("-")) {
+      operator = "-";
+    } if(previous.textContent.includes("/")){
+      operator = "/";
+    } if(previous.textContent.includes("*")) {
+      operator = "*";
+    }
+  return operator;
+};

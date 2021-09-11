@@ -7,9 +7,9 @@ const screen = document.querySelector("screen");
 const input = document.getElementById("input");
 const previous = document.getElementById("numberOneAndOperator");
 const operateBtns = document.querySelectorAll(".operateBtns");
-let inputNumber = "";
 const plus = document.getElementById("+");
-
+let inputNumber = '';
+let postCalc = parseInt(input.textContent,10);
 function add(x, y) {
 	return x + y;
 };
@@ -73,18 +73,26 @@ operateBtn.addEventListener('click', function() {
   operate();
   previous.innerText = `${x} ${operator} ${y} =`;
   input.textContent = Math.round(result*100)/100;
+  console.log(result);
+  console.log(inputNumber);
+  return postCalc;
   });
   
 
   operateBtns.forEach((button) => {
     button.addEventListener('click', () => {
       let operator = button.value;
-      previous.textContent = `${inputNumber} ${operator}`;
+      if(input.textContent.includes(inputNumber)) {
+        previous.textContent = `${inputNumber} ${operator}`;
+      } 
+      console.log(inputNumber);
+      console.log(operator);
       inputNumber = '';
-      
     })
   }); 
   
+  //previous.textContent = `${inputNumber} ${operator}`;
+
   function chooseOperator() {
     let operator = "";
     if(previous.textContent.includes("+")) {

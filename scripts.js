@@ -9,7 +9,6 @@ const previous = document.getElementById("numberOneAndOperator");
 const operateBtns = document.querySelectorAll(".operateBtns");
 const plus = document.getElementById("+");
 let inputNumber = '';
-let postCalc = parseInt(input.textContent,10);
 function add(x, y) {
 	return x + y;
 };
@@ -48,7 +47,7 @@ numberBtns.forEach((button) => {
 })
 
 function addNumber(button) {
-  inputNumber += button.target.value;
+  inputNumber += button.target.innerText;
   return inputNumber;
 }
 
@@ -62,31 +61,37 @@ AC.addEventListener('click', function() {
   operator = '';
 })
 
-dot.addEventListener('click', addNumber);
-dot.addEventListener('click', showNumber);
+function checkDot() {
+  if(input.textContent.includes(".") && previous.textContent.includes(".")) {
+  return;
+} else {
+  input.textContent += '.';
+}};
+dot.addEventListener('click', checkDot);
+
+/* dot.addEventListener('click', addNumber);
+dot.addEventListener('click', showNumber); */
 
 operateBtn.addEventListener('click', function() {
-  let x = parseInt(previous.textContent, 10);
-  let y = Number(inputNumber);
+  let x = parseFloat(previous.textContent);
+  let y = parseFloat(inputNumber);
   let operator = chooseOperator();
   let result = operate(x, operator, y)
   operate();
   previous.innerText = `${x} ${operator} ${y} =`;
   input.textContent = Math.round(result*100)/100;
-  console.log(result);
-  console.log(inputNumber);
-  return postCalc;
   });
+
+  let postCalc = parseInt (input.textContent, 10);
   
 
   operateBtns.forEach((button) => {
     button.addEventListener('click', () => {
       let operator = button.value;
+      inputNumber = parseInt(input.textContent);
       if(input.textContent.includes(inputNumber)) {
         previous.textContent = `${inputNumber} ${operator}`;
       } 
-      console.log(inputNumber);
-      console.log(operator);
       inputNumber = '';
     })
   }); 

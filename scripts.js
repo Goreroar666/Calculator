@@ -10,6 +10,7 @@ const operateBtns = document.querySelectorAll(".operateBtns");
 const plus = document.getElementById("+");
 const backSpace = document.getElementById("backSpace");
 let inputNumber = '';
+
 function add(x, y) {
 	return x + y;
 };
@@ -95,8 +96,8 @@ operateBtn.addEventListener('click', function() {
   let operator = chooseOperator();
   let result = operate(x, operator, y)
   operate();
-  previous.innerText = `${x} ${operator} ${y} =`;
   input.textContent = Math.round(result*100)/100;
+  previous.innerText = '';
   });
   
 
@@ -110,8 +111,7 @@ operateBtn.addEventListener('click', function() {
       inputNumber = '';
     })
   }); 
-  
-  //previous.textContent = `${inputNumber} ${operator}`;
+
 
   function chooseOperator() {
     let operator = "";

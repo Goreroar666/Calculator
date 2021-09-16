@@ -1,6 +1,6 @@
 const numberBtns = document.querySelectorAll('.numberButtons');
 const AC = document.getElementById("AC");
-const minus = document.getElementById("+/-");
+const negative = document.getElementById("negative");
 const dot = document.getElementById(".");
 const operateBtn = document.getElementById("operateBtn");
 const screen = document.querySelector("screen");
@@ -8,6 +8,7 @@ const input = document.getElementById("input");
 const previous = document.getElementById("numberOneAndOperator");
 const operateBtns = document.querySelectorAll(".operateBtns");
 const plus = document.getElementById("+");
+const backSpace = document.getElementById("backSpace");
 let inputNumber = '';
 function add(x, y) {
 	return x + y;
@@ -34,8 +35,9 @@ return add(x, y);
   return multiply(x, y);
 } if (operator === "/") {
     return divide(x, y);
-  }
-};
+} if (operator === "/" && y === 0) {
+  return "Can't divide by 0.";
+}};
 
 numberBtns.forEach((button) => {
   button.addEventListener('click', addNumber);
@@ -54,6 +56,7 @@ function addNumber(button) {
 function showNumber(x) {
 input.textContent = x;
 }
+
 AC.addEventListener('click', function() {
   input.textContent = 0;
   inputNumber = '';
@@ -62,15 +65,29 @@ AC.addEventListener('click', function() {
 })
 
 function checkDot() {
-  if(input.textContent.includes(".") && previous.textContent.includes(".")) {
-  return;
-} else {
-  input.textContent += '.';
-}};
+  if(inputNumber.includes(".")) return;
+  inputNumber += '.';
+};
+
 dot.addEventListener('click', checkDot);
 
-/* dot.addEventListener('click', addNumber);
-dot.addEventListener('click', showNumber); */
+function backspace() {
+  input.textContent = input.textContent.toString().slice(0,-1);
+};
+
+backSpace.addEventListener('click', backspace);
+
+function minus () {
+  if (parseFloat(input.textContent) > 0) {
+    input.textContent = -Math.abs(input.textContent);
+    return;
+  } else if (parseFloat(input.textContent) < 0) {
+    input.textContent = Math.abs(input.textContent);
+    return;
+  }
+}
+
+negative.addEventListener('click', minus);
 
 operateBtn.addEventListener('click', function() {
   let x = parseFloat(previous.textContent);
@@ -81,14 +98,12 @@ operateBtn.addEventListener('click', function() {
   previous.innerText = `${x} ${operator} ${y} =`;
   input.textContent = Math.round(result*100)/100;
   });
-
-  let postCalc = parseInt (input.textContent, 10);
   
 
   operateBtns.forEach((button) => {
     button.addEventListener('click', () => {
       let operator = button.value;
-      inputNumber = parseInt(input.textContent);
+      inputNumber = parseFloat(input.textContent);
       if(input.textContent.includes(inputNumber)) {
         previous.textContent = `${inputNumber} ${operator}`;
       } 

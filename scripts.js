@@ -96,14 +96,15 @@ operateBtn.addEventListener('click', function() {
   let operator = chooseOperator();
   let result = operate(x, operator, y)
   operate();
+  previous.textContent = `${x} ${operator} ${y} =`;
   input.textContent = Math.round(result*100)/100;
-  previous.innerText = '';
   });
   
 
   operateBtns.forEach((button) => {
     button.addEventListener('click', () => {
       let operator = button.value;
+      calculate();
       inputNumber = parseFloat(input.textContent);
       if(input.textContent.includes(inputNumber)) {
         previous.textContent = `${inputNumber} ${operator}`;
@@ -123,6 +124,34 @@ operateBtn.addEventListener('click', function() {
       operator = "/";
     } if(previous.textContent.includes("*")) {
       operator = "*";
-    }
+    } 
   return operator;
 };
+
+function calculate() {
+  let x = parseFloat(previous.textContent);
+  let y = parseFloat(input.textContent);
+  if(previous.textContent === '' || input.textContent === '') {
+    return;
+  } else if (previous.textContent.includes("+")) {
+    input.textContent = add(x, y);
+    previous.textContent = '';
+    operator = '';
+    inputNumber = '';
+  } if (previous.textContent.includes("-")) {
+    input.textContent = subtract(x, y);
+    previous.textContent = '';
+    operator = '';
+    inputNumber = '';
+  } if (operator === '/') {
+    input.textContent = divide(x, y);
+    previous.textContent = '';
+      operator = '';
+      inputNumber = '';
+   } if (previous.textContent.includes("*")) {
+      input.textContent = multiply(x,y);
+      previous.textContent = '';
+      operator = '';
+      inputNumber = '';
+    }
+  }

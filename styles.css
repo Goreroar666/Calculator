@@ -1,72 +1,103 @@
-button  
-{  
-width:40px;  
-height:30px;  
+button {  
+width:80px;  
+height:60px;  
+border:none;  
+border-radius:16px;  
+margin-left:34px;  
+margin-bottom: 10px;
+cursor:pointer;  
+border-top:4px solid transparent;  
+position: relative; 
+top:30px;  
+font-size: 30px;
+}  
+#zero {
+width:200px;  
+height:60px;  
 border:none;  
 border-radius:8px;  
-margin-left:17px;  
+margin-left:32px;  
 cursor:pointer;  
 border-top:2px solid transparent;  
 position: relative; 
-top:15px;  
-}  
-#AC  
-{  
+top:30px; 
+color:black;  
+background-color:303030;  
+border-bottom:black 2px solid;  
+border-top:2px 303030 solid; 
+}
+#AC {  
 color:white;  
 background-color:#6f6f6f;  
 border-bottom:black 2px solid;  
 border-top:2px #6f6f6f solid;  
 }  
-.operateBtns  
-{  
+.operateBtns {  
 color:black;  
 background-color:#fffc45;  
 border-bottom:black 2px solid;  
 }  
-#backSpace  
-{  
+#backSpace {  
 color:black;  
 background-color:#fffc45;  
 border-bottom:black 2px solid;  
 }  
-.numberButtons  
-{  
+.numberButtons {  
 color:black;  
 background-color:303030;  
 border-bottom:black 2px solid;  
 border-top:2px 303030 solid;  
 }  
-#operateBtn  
-{  
+#operateBtn {  
 color:black;  
 background-color:#FF9933;  
 border-bottom:black 2px solid;  
 border-top:2px #FF9933 solid;  
 }   
-body  
-{  
-background-color:tan;  
+body {  
+background-color:rgb(138, 117, 48);  
 }  
-.container  
-{  
+.container {  
 background-color:#3d4543;  
-height:300px;  
-width:250px;  
+height:600px;  
+width:500px;  
 border-radius:10px;  
 position:relative;  
-top:80px;  
+top:160px;  
 left:40%;  
 } 
-.screen  
-{  
+.screen {  
 background-color:#bccd95;  
-width:220px;  
+width:440px;  
 position:relative;  
-left:15px;  
-top:20px;  
-height:80px;  
+left:30px;  
+top:40px;  
+height:160px;  
 margin-bottom: 45px;
 color:black; 
-font-size:21px;  
+font-size:42px;  
 text-align:right; 
 }  
+#numberOneAndOperator {
+font-size: 30px;
+}
+#gitHubImg {
+background-color: transparent;
+height: 75px;
+width: 75px;
+position: center;
+    
+}
+footer {
+position: absolute;
+bottom: 0;
+text-align: center;
+font-size: x-large;
+margin-left: 1150px;
+margin-bottom: 100px;
+}
+h1 {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 80px;
+text-align: center;
+}

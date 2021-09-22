@@ -62,7 +62,7 @@ background-color:#3d4543;
 height:600px;  
 width:500px;  
 border-radius:10px;  
-position:relative;  
+margin: auto;
 top:160px;  
 left:40%;  
 } 

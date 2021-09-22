@@ -61,6 +61,7 @@ function checkDot() {
 
 function backspace() {
   input.textContent = input.textContent.toString().slice(0,-1);
+  inputNumber = inputNumber.toString().slice(0,-1);
 };
 
 function minus() {
@@ -113,17 +114,17 @@ function calculate() {
     previous.textContent = '';
     operator = '';
     inputNumber = '';
-  } if (previous.textContent.includes("-")) {
+  } else if (previous.textContent.includes("-")) {
     input.textContent = subtract(x, y);
     previous.textContent = '';
     operator = '';
     inputNumber = '';
-  } if (previous.textContent.includes("/")) {
+  } else if (previous.textContent.includes("/")) {
     input.textContent = divide(x, y);
     previous.textContent = '';
       operator = '';
       inputNumber = '';
-   } if (previous.textContent.includes("*")) {
+   } else if (previous.textContent.includes("*")) {
       input.textContent = multiply(x,y);
       previous.textContent = '';
       operator = '';
